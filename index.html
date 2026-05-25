@@ -301,6 +301,7 @@ section h2 {
     <a href="#s5" data-section="s5">5. 分离变量法</a>
     <a href="#s6" data-section="s6">6. 有限差分法</a>
     <a href="#s7" data-section="s7" style="color:#d97706;font-weight:600;">📋 必做习题清单</a>
+    <a href="#s8" data-section="s8">📝 习题详情（完整题目）</a>
   </nav>
   <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
     <span>🌙</span> <span>暗色模式</span>
@@ -882,6 +883,366 @@ section h2 {
         <li>Section A 全是 MCQ — 考 PDE 分类、特征坐标识别、Fourier 系数、差分精度阶数、稳定性条件</li>
       </ul>
     </div>
+  </section>
+
+  <!-- ═══ Section 8: Full Problem Texts ═══ -->
+  <section id="s8">
+    <h2>📝 习题详情（完整题目文本）</h2>
+    <p class="section-desc">按 Sheet 分组 · 只包含必做清单中的题目 · 点击展开</p>
+
+    <!-- ── Sheet 2 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 2 — 曲线坐标（Q1, Q5）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p><strong>Q1. 球极坐标基向量与尺度因子</strong></p>
+        <div class="formula-block">
+          Derive the unit basis vectors for spherical polar coordinates, showing along the way that the appropriate scale factors are
+          $$h_r = 1,\quad h_\theta = r,\quad h_\phi = r \sin\theta$$
+          Show that the basis vectors are orthogonal.
+          Using the scale factors, determine the line element $ds$, surface element $dS$ on the spherical $r$ coordinate surface and volume element $dV$ in spherical polars.
+        </div>
+        <p><strong>Q5. 球极坐标下的旋度</strong></p>
+        <div class="formula-block">
+          Use the scale factors for spherical polar coordinates to determine the curl of a vector field $\mathbf{u}$ in spherical polar coordinates.
+          <br><br>
+          <strong>答案概要：</strong>
+          $$\nabla \times \mathbf{u} = \frac{1}{r\sin\theta}\left[\frac{\partial}{\partial\theta}(\sin\theta\,u_\phi) - \frac{\partial u_\theta}{\partial\phi}\right]\mathbf{e}_r + \frac{1}{r}\left[\frac{1}{\sin\theta}\frac{\partial u_r}{\partial\phi} - \frac{\partial}{\partial r}(r u_\phi)\right]\mathbf{e}_\theta + \frac{1}{r}\left[\frac{\partial}{\partial r}(r u_\theta) - \frac{\partial u_r}{\partial\theta}\right]\mathbf{e}_\phi$$
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 3 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 3 — 三重积分 &amp; 积分定理（Q1, Q2, Q4, Q10, Q12, Q14, Q15, Q16, Q17）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q1. 圆柱体上的三重积分</strong></p>
+        <div class="formula-block">
+          Evaluate $$\iiint_R x^2\,dV$$ where $R$ is a circular cylinder of radius $a$ and length $L$ with centre in the $xy$ plane at $x=0, y=0$. The centreline of the cylinder is aligned with the $z$-axis.
+          <br><br><strong>答案：</strong> $\frac{\pi L a^4}{4}$（与 $z_0$ 无关）
+        </div>
+
+        <p><strong>Q2. 球体与圆柱体的体积</strong></p>
+        <div class="formula-block">
+          Determine the volume of a sphere of radius $a$ and circular cylinder of radius $a$ and length $L$.
+          <br><br><strong>答案：</strong> 球体 $V = \frac{4}{3}\pi a^3$，圆柱体 $V = \pi L a^2$
+        </div>
+
+        <p><strong>Q4. 抛物面与平面围成的体积分</strong></p>
+        <div class="formula-block">
+          Evaluate $$\iiint_R \sqrt{x^2+y^2}\,dV$$ where $R$ is the solid bounded by $z = x^2+y^2$ and the plane $z = 3$.
+          <br><br><strong>答案：</strong> $\frac{27\pi}{2}$（用柱坐标，$0 \le r \le \sqrt{3}$, $r^2 \le z \le 3$）
+        </div>
+
+        <p><strong>Q10. 参数化法求曲面积分</strong></p>
+        <div class="formula-block">
+          Using parametrization, determine $$\iint_\Sigma y^2\,dS$$ where $\Sigma$ is that part of the surface of the cylinder $x^2+y^2=1$ lying between $z=0$ and $z=2$.
+          <br><br><strong>参数化：</strong> $\mathbf{r}(\theta, Z) = \cos\theta\,\mathbf{e}_x + \sin\theta\,\mathbf{e}_y + Z\,\mathbf{e}_z$，$0\le\theta\le 2\pi$, $0\le Z\le 2$
+          <br><strong>答案：</strong> $2\pi$
+        </div>
+
+        <p><strong>Q12. 散度定理求面积分</strong></p>
+        <div class="formula-block">
+          Use the divergence theorem to evaluate $$\oiint_\Sigma \mathbf{u}\cdot\mathbf{n}\,dS$$ where $\mathbf{u} = xy\,\mathbf{e}_x + x^2\,\mathbf{e}_y - zy\,\mathbf{e}_z$ and $\Sigma$ is the surface of the sphere $x^2+y^2+z^2=1$.
+          <br><br><strong>答案：</strong> $\nabla\cdot\mathbf{u} = y + 0 - y = 0$，所以积分为 $0$
+        </div>
+
+        <p><strong>Q14. 散度定理处理非闭合曲面</strong></p>
+        <div class="formula-block">
+          Use the divergence theorem to evaluate $\iint_\Sigma \mathbf{u}\cdot\mathbf{n}\,dS$ where $\mathbf{u} = (x+y)\mathbf{e}_x + z^2\mathbf{e}_y + x^2\mathbf{e}_z$ and $\Sigma$ is the surface of the hemisphere $x^2+y^2+z^2=1$ with $z>0$ and $\mathbf{n}$ the upward pointing normal. <em>[Note that $\Sigma$ is not closed!]</em>
+          <br><br><strong>关键技巧：</strong> 补上底面圆盘 $D$ 使其闭合，用散度定理算体积分，再减去底面的贡献
+          <br><strong>答案：</strong> $\frac{11\pi}{12}$
+        </div>
+
+        <p><strong>Q15. 散度定理与 Poisson 方程</strong></p>
+        <div class="formula-block">
+          The function $u$ satisfies Poisson's equation $\nabla^2 u = f$ in a region $R$, bounded by a closed curve. Use the divergence theorem to show that
+          $$\iiint_R f\,dV = \oiint_{\partial R} \nabla u \cdot \mathbf{n}\,dS$$
+        </div>
+
+        <p><strong>Q16. 验证 Stokes 定理（圆盘）</strong></p>
+        <div class="formula-block">
+          Verify Stokes' theorem by evaluating both the line and surface integrals for the vector field $\mathbf{u} = (2x-y)\mathbf{e}_x - y^2\mathbf{e}_y - y^2z\,\mathbf{e}_z$ and the surface $\Sigma$ given by the disc $z=0$, $x^2+y^2 \le 1$.
+          <br><br><strong>答案：</strong> 线积分 = 面积分 = $\pi$
+        </div>
+
+        <p><strong>Q17. 用 Stokes 定理算面积分</strong></p>
+        <div class="formula-block">
+          Use Stokes' theorem to evaluate $\iint_\Sigma (\nabla\times\mathbf{u})\cdot\mathbf{n}\,dS$ where $\mathbf{u} = z^2\mathbf{e}_x - 3x\,\mathbf{e}_y - y^2z\,\mathbf{e}_z$ and $\Sigma$ is the part of $z = 5 - x^2 - y^2$ above the plane $z = 1$. You are told that $\mathbf{n} = \mathbf{e}_z$ at $\mathbf{x} = (0,0,5)$.
+          <br><br><strong>答案：</strong> $-12\pi$（转为线积分计算，边界是 $z=1$ 上半径为 $2$ 的圆）
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 4 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 4 — PDE 分类 &amp; 标准型（Q1, Q2, Q4, Q7）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q1. 判断 PDE 的线性/非线性类别</strong></p>
+        <div class="formula-block">
+          Are the following PDEs linear or nonlinear? If nonlinear, can they be classified as semilinear or quasi-linear?
+          $$\begin{aligned}
+          &\text{(a) } x^2 u_{xxx} + u_t = xu &&\text{(b) } (u_{xt})^3 + u_t = x^2\\
+          &\text{(c) } u_{xx} + u u_y = u^3 &&\text{(d) } u_x + u_y = u^3\\
+          &\text{(e) } u_{tt} + u_x = u &&\text{(f) } (u_x)^2 u_{xxx} + (u_{xx})^2 + u u_x = x\\
+          &\text{(g) } x^2 u_{xx} + xy u_{xy} + y^2 u_{yy} = u &&\text{(h) } u_{xxx} + 6u u_t + u_x = 0
+          \end{aligned}$$
+        </div>
+
+        <p><strong>Q2. 二阶 PDE 的类型判定</strong></p>
+        <div class="formula-block">
+          Fully classify the PDEs from question 1 (i.e. state whether each is hyperbolic, parabolic, or elliptic).
+          <br><br>
+          <strong>关键公式：</strong> 对于 $A u_{xx} + 2B u_{xy} + C u_{yy} + \ldots = 0$，判别式 $\Delta = B^2 - AC$：
+          <br>$\Delta > 0$ 双曲型 | $\Delta = 0$ 抛物型 | $\Delta < 0$ 椭圆型
+        </div>
+
+        <p><strong>Q4. 坐标变换下的类型不变性证明</strong></p>
+        <div class="formula-block">
+          For the general second order semi-linear PDE
+          $$A(x,y)u_{xx} + 2B(x,y)u_{xy} + C(x,y)u_{yy} + D(x,y,u,u_x,u_y) = Q(x,y)$$
+          work through the transformation of coordinates from $(x,y)$ to $(\xi,\eta)$ using the chain rule to rewrite the equation and show that
+          $$b^2 - ac = (B^2 - AC)J^2$$
+          where $J = (\xi_x\eta_y - \xi_y\eta_x)$ is the Jacobian of the transformation.
+        </div>
+
+        <p><strong>Q7. 求 PDE 的标准型</strong></p>
+        <div class="formula-block">
+          In the lecture we determined the canonical form for the PDE
+          $$y^2 u_{xx} - 2xy u_{xy} + x^2 u_{yy} = 0$$
+          Complete the analysis to find its canonical form.
+          <br><br>
+          <strong>特征方程：</strong> $A\left(\frac{dy}{dx}\right)^2 - 2B\frac{dy}{dx} + C = 0$，解得特征坐标后进行变换
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 5 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 5 — Fourier 级数（Q2, Q3, Q4, Q5）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q2. 函数的间断点分析</strong></p>
+        <div class="formula-block">
+          Determine the discontinuities of the following functions and at each of these, determine whether the right and left limits exist or not.
+          $$\begin{aligned}
+          &\text{(a) } f(x) = 1/x^2 &&\text{(b) } f(x) = \begin{cases} 1, & x < 0 \\ 0, & x \ge 0 \end{cases}\\
+          &\text{(c) } f(x) = \begin{cases} 1, & x \le 0 \\ 1/x, & x > 0 \end{cases} &&\text{(d) } f(x) = \begin{cases} -x, & x \le 1 \\ 1+x, & x > 1 \end{cases}
+          \end{aligned}$$
+        </div>
+
+        <p><strong>Q3. 正交性与 Legendre 多项式</strong></p>
+        <div class="formula-block">
+          (a) Are the functions $v_n(x) = x^n$ ($n = 0,1,\ldots$) orthogonal in the interval $I = [-1,1]$?
+          <br>(b) The Legendre polynomials are defined by $P_0(x) = 1$, $P_1(x) = x$ and
+          $$P_{n+1}(x) = \frac{1}{n+1}\left[(2n+1)x P_n(x) - n P_{n-1}(x)\right]$$
+          Show that for even $n$ the $P_n(x)$ are even functions, while for odd $n$ they are odd. Determine $P_2(x)$ and show that $P_0, P_1, P_2$ are orthogonal in $I$.
+          <br><br><strong>答案：</strong> $P_2(x) = \frac{3x^2-1}{2}$，$\int_{-1}^1 P_i P_j dx = 0$ for $i \neq j$
+        </div>
+
+        <p><strong>Q4. Fourier 级数的草图绘制</strong></p>
+        <div class="formula-block">
+          For each of the following $f(x)$, defined only for $x \in [-L, L]$, sketch on the same graph: (i) $f(x)$, (ii) $f_{pe}(x)$ (periodic extension) and (iii) the Fourier series $F(x)$ associated with $f(x)$.
+          $$\text{(a) } f(x) = x+1 \quad \text{(b) } f(x) = x^2 \quad \text{(c) } f(x) = e^x \quad \text{(d) } f(x) = \begin{cases} 0, & x \le 0 \\ 1+x, & x > 0 \end{cases}$$
+        </div>
+
+        <p><strong>Q5. Fourier 正弦/余弦级数</strong></p>
+        <div class="formula-block">
+          For the following functions sketch $f(x)$, the associated Fourier series (of period $2L$) $F(x)$, the Fourier sine series $F_s(x)$ and Fourier cosine series $F_c(x)$.
+          $$\text{(a) } f(x) = 1 \quad \text{(b) } f(x) = e^x \quad \text{(c) } f(x) = \begin{cases} x, & -L < x \le 0 \\ 1+x, & 0 < x \le L \end{cases}$$
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 6 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 6 — 一阶 PDE &amp; 特征线法（Q3, Q4, Q5, Q6, Q7, Q8, Q9）🆕 2025 重点</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q3. 坐标变换法解 PDE</strong></p>
+        <div class="formula-block">
+          Solve $x u_x - y u_y = u$ subject to the data $u = x^2$ on $y = x$ for $1 \le y \le 2$ using the <strong>method of coordinate transformations</strong>, sketching the characteristics and showing that the same result is obtained as with the method of characteristics.
+          <br><br><strong>特征线：</strong> $\frac{dx}{x} = \frac{dy}{-y} \Rightarrow xy = \text{const}$
+          <br><strong>答案：</strong> $u(x,y) = x^4/y^2$（在 $y = x$ 区域内）
+        </div>
+
+        <p><strong>Q4. 特征线 + Cauchy 数据</strong></p>
+        <div class="formula-block">
+          Determine the general solution of $4y u_x - x u_y = 0$ using the method of transformations and sketch the characteristics. Find the solution that satisfies the Cauchy data $u(x,0) = x^2$ for $x \ge 0$.
+          <br>Can a solution be found for $u(x,0) = x$ for all $x$? What about $u(x,0) = x$ for $x \ge 0$?
+          <br>If we impose $u(x,y) = g(x,y)$ on $x^2/4 + y^2 = 1$, what form does $g$ have to take?
+          <br><br><strong>特征线：</strong> $x^2 + 4y^2 = \text{const}$（椭圆族）
+          <br><strong>通解：</strong> $u(x,y) = f(x^2 + 4y^2)$
+        </div>
+
+        <p><strong>Q5. 含 $e^{-y}$ 的变系数 PDE</strong></p>
+        <div class="formula-block">
+          Use the method of transformation to determine the general solution of
+          $$x^2 u_x + e^{-y} u_y = 0$$
+          <br><strong>特征线：</strong> $\frac{dx}{x^2} = \frac{dy}{e^{-y}} \Rightarrow -\frac{1}{x} = e^y + C$
+          <br><strong>通解：</strong> $u(x,y) = f\left(\frac{1}{x} + e^y\right)$
+        </div>
+
+        <p><strong>Q6. 特征线法解 Cauchy 问题</strong></p>
+        <div class="formula-block">
+          Using the method of characteristics solve the Cauchy problem
+          $$u_x - u_y = 1 \quad \text{subject to} \quad u(x,0) = x^2$$
+          <br><strong>特征方程：</strong> $\frac{dx}{ds}=1,\; \frac{dy}{ds}=-1,\; \frac{du}{ds}=1$
+          <br><strong>答案：</strong> $u(x,y) = (x+y)^2 + y$
+        </div>
+
+        <p><strong>Q7. 拟线性 PDE 的特征线法</strong></p>
+        <div class="formula-block">
+          Using the method of characteristics solve
+          $$x u_x + y u_y = x e^{-u} \quad \text{subject to} \quad u(x, x^2) = 0$$
+          <br><strong>特征方程：</strong> $\frac{dx}{ds}=x,\; \frac{dy}{ds}=y,\; \frac{du}{ds}=x e^{-u}$
+          <br><strong>答案：</strong> $u(x,y) = \ln\left(1 + \frac{x^2}{y}\right)$
+        </div>
+
+        <p><strong>Q8. 含根号系数的 PDE</strong></p>
+        <div class="formula-block">
+          Using the method of characteristics solve
+          $$\sqrt{1-x^2}\,u_x + u_y = 0 \quad \text{subject to} \quad u(0,y) = y$$
+          <br><strong>答案：</strong> $u(x,y) = y - \arcsin(x)$
+        </div>
+
+        <p><strong>Q9. 常系数一阶 PDE 通解公式</strong></p>
+        <div class="formula-block">
+          Show that the general solution to $a u_x + b u_y = c$ (for real constants $a,b,c$) is
+          $$u(x,y) = \frac{c}{a}x + f(ay - bx)$$
+          for some function $f$, using the method of transformations. Determine $f$ (if it exists) when:
+          <br>(i) $u(x,y) = x$ on $y = 0$
+          <br>(ii) $u(x,y) = x$ on $ay - bx = 1$ for $\alpha \in \mathbb{R}$
+          <br><br><strong>答案：</strong> (i) $f(z) = 0$ (ii) 仅当 $\alpha \neq 1$ 时存在
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 7 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 7 — 分离变量法（Q1, Q2）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q1. 热方程的分离变量（Dirichlet BC）</strong></p>
+        <div class="formula-block">
+          Consider the heat equation $u_t = u_{xx}$ for $t > 0$ and $x \in (0,\pi)$ with BCs $u(0,t) = u(\pi,t) = 0$.
+          <br>By choosing $u(x,t) = X(x)T(t)$, explain how you arrive at the eigenvalue problem:
+          $$X'' - \lambda X = 0, \quad X(0) = X(\pi) = 0$$
+          Find all eigenvalues $\lambda_n$ and eigenfunctions $X_n(x)$, considering <strong>all possible values</strong> for $\lambda$ ($\lambda=0$, $\lambda>0$, $\lambda<0$). Sketch the first three eigenfunctions. Determine $T_n(t)$ and state the general solution.
+          <br><br><strong>答案：</strong>
+          <br>$\lambda=0$: $X=0$ (trivial, 不是特征值)
+          <br>$\lambda>0$: $X=0$ (trivial, 不是特征值)
+          <br>$\lambda<0$: $\lambda_n = -n^2$, $X_n = \sin(nx)$, $T_n = e^{-n^2 t}$
+          <br><strong>通解：</strong> $u(x,t) = \sum_{n=1}^\infty B_n \sin(nx) e^{-n^2 t}$
+        </div>
+
+        <p><strong>Q2. 波动方程的分离变量（Neumann BC）</strong></p>
+        <div class="formula-block">
+          Consider the wave equation $u_{tt} = u_{xx}$ for $t > 0$ and $x \in (0,\pi)$ with BCs $u_x(0,t) = u_x(\pi,t) = 0$.
+          <br>By choosing $u(x,t) = X(x)T(t)$, derive the eigenvalue problem:
+          $$X'' - \lambda X = 0, \quad X'(0) = X'(\pi) = 0$$
+          Find all eigenvalues and eigenfunctions. Determine $T_n(t)$ and state the general solution.
+          <br><br><strong>答案：</strong>
+          <br>$\lambda=0$: $X_0 = 1$, $T_0 = A_0 + B_0 t$
+          <br>$\lambda_n = -n^2$, $X_n = \cos(nx)$, $T_n = A_n\cos(nt) + B_n\sin(nt)$
+          <br><strong>通解：</strong> $u = A_0 + B_0 t + \sum_{n=1}^\infty \cos(nx)[A_n\cos(nt) + B_n\sin(nt)]$
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 8 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 8 — 非齐次边界条件 &amp; 混合 BC（Q1, Q2）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q1. 非齐次 Dirichlet BC 的处理</strong></p>
+        <div class="formula-block">
+          Consider the heat equation $u_t = u_{xx}$, $t > 0$, $x \in (0,\pi)$ with inhomogeneous BCs:
+          $$u(0,t) = \alpha, \quad u(\pi,t) = \beta$$
+          where $\alpha$ and $\beta$ are constants.
+          <br>Find a particular solution $v(x,t)$ (hint: $v$ could be linear in $x$ and independent of $t$).
+          <br>By considering $w = u - v$, find the full general solution.
+          <br><br><strong>方法：</strong>
+          <br>$v(x) = \alpha + \frac{\beta-\alpha}{\pi}x$（满足 PDE 和 BC 的稳态解）
+          <br>$w_t = w_{xx}$, $w(0,t) = w(\pi,t) = 0$ → 回到 Sheet 7 Q1 的标准形式
+          <br><strong>通解：</strong> $u = \alpha + \frac{\beta-\alpha}{\pi}x + \sum_{n=1}^\infty B_n \sin(nx) e^{-n^2 t}$
+        </div>
+
+        <p><strong>Q2. 混合边界条件（Dirichlet + Neumann）</strong></p>
+        <div class="formula-block">
+          Using separation of variables, find an infinite set of linearly independent solutions of the heat equation $u_t = u_{xx}$ defined for $x \in (0,\pi)$ and $t > 0$, subject to:
+          $$u(0,t) = 0, \quad u_x(\pi,t) = 0$$
+          If $u(x,0) = \pi$ for all $0 < x < \pi$, find the exact solution as a Fourier expansion.
+          <br><strong>Hint:</strong> $\int_0^\pi \sin\left(\frac{(n-1/2)x}{\pi}\right)\sin\left(\frac{(m-1/2)x}{\pi}\right)dx = 0$ if $m \neq n$
+          <br><br><strong>答案：</strong>
+          <br>$\lambda_n = -(n-1/2)^2$, $X_n = \sin((n-1/2)x)$, $T_n = e^{-(n-1/2)^2 t}$
+          <br>$u(x,t) = \sum_{n=1}^\infty \frac{4}{2n-1} \sin((n-1/2)x) e^{-(n-1/2)^2 t}$
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 9 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 9 — 有限差分基础（Q2, Q3, Q4）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q2. 前向差分 vs 中心差分精度比较</strong></p>
+        <div class="formula-block">
+          Let $u(x) = e^x$. Compute the finite-difference approximations
+          $$\frac{u(x+h)-u(x-h)}{2h} \quad\text{and}\quad \frac{u(x+h)-u(x)}{h}$$
+          to $u'(0)$ at $x=0$ for $h=0.1$ and $h=0.01$. Which is the most accurate?
+          <br>Using Taylor's theorem, show that:
+          $$u'(x) = \frac{u(x+h)-u(x-h)}{2h} + O(h^2) \quad\text{and}\quad u'(x) = \frac{u(x+h)-u(x)}{h} + O(h)$$
+          <br><strong>关键结论：</strong> 中心差分是 $O(h^2)$，前向差分是 $O(h)$，中心差分更精确
+        </div>
+
+        <p><strong>Q3. 后向差分的截断误差</strong></p>
+        <div class="formula-block">
+          The backward difference is given by $\frac{u(x)-u(x-h)}{h}$. Using Taylor's theorem, find and justify the order of this numerical method.
+          <br><br><strong>答案：</strong> $O(h)$，与 forward difference 同阶
+        </div>
+
+        <p><strong>Q4. 二阶导数差分近似</strong></p>
+        <div class="formula-block">
+          For a grid spacing $h$, let
+          $$\delta^2(x) = u(x+h) + u(x-h) - 2u(x)$$
+          $$D^2(x) = \frac{u(x+5h) + 5u(x-h) - 6u(x)}{15}$$
+          (a) Compute $\frac{\delta^2(0)}{h^2}$ and $\frac{D^2(0)}{h^2}$ for $u(x)=e^x$ and $h=0.1$. Which is most accurate?
+          <br>(b) Show that $\frac{\delta^2(x)}{h^2}$ is a <strong>second-order</strong> accurate approximation to $u''(x)$.
+          <br><br><strong>答案：</strong> $\frac{\delta^2(x)}{h^2} = u''(x) + O(h^2)$（经典三点中心差分）
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sheet 10 ── -->
+    <div class="accordion">
+      <button class="accordion-header"><span>Sheet 10 — 有限差分 BVP &amp; 稳定性（Q1, Q3）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+
+        <p><strong>Q1. 对流-扩散方程的有限差分 + 矩阵形式</strong></p>
+        <div class="formula-block">
+          For $w > 0$, let $u$ be the solution of
+          $$-\frac{d^2 u}{dx^2} + w\frac{du}{dx} = 0, \quad u(0)=1,\; u(1)=0$$
+          (a) Derive a <strong>centered difference</strong> approximation on the grid $x_j = jh$ for $j=0,\ldots,N$ and $h=1/N$. Show that the truncation error $|T_j| = O(h^2)$.
+          <br>(b) Show how the system can be written as $A\mathbf{u} = \mathbf{f}$, where $\mathbf{u} = [u_1,\ldots,u_{N-1}]^T$, specifying $A$ and $\mathbf{f}$.
+          <br><br><strong>中心差分格式：</strong>
+          $$-\frac{u_{j+1}-2u_j+u_{j-1}}{h^2} + w\frac{u_{j+1}-u_{j-1}}{2h} = 0$$
+          <br><strong>矩阵 $A$：</strong> 三对角，$a_{j,j}=2/h^2$, $a_{j,j\pm1}= -1/h^2 \pm w/(2h)$
+        </div>
+
+        <p><strong>Q3. Neumann BC 的有限差分处理</strong></p>
+        <div class="formula-block">
+          We seek to approximate $u(x)$ such that
+          $$-\frac{d^2 u}{dx^2} - \frac{du}{dx} = f(x) \quad\text{for } 0 < x < 1 \quad\text{with}\quad u(0)=0,\; u'(1)=0$$
+          (a) Derive a <strong>second-order-consistent</strong> method for approximating $u'(1)=0$ of the form
+          $$a u_{N-2} + b u_{N-1} + c u_N = 0$$
+          (b) Derive the centred finite-difference approximation and formulate the linear system $A\mathbf{u} = \mathbf{f}$, $\mathbf{u} = [u_1,\ldots,u_N]^T$.
+          <br><br><strong>关键技巧：</strong> 用 Taylor 展开确定 $a,b,c$ 使得格式达到 $O(h^2)$
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <footer style="text-align:center; padding: 30px; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px;">
