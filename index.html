@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MATH24420 PDE 复习要点</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --border: #e0e0e0;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --hover: #f0f4ff;
+  --tag-bg: #e8f0fe;
+  --tag-text: #1a56db;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --sidebar-bg: #fafbfc;
+  --card-bg: #ffffff;
+  --code-bg: #f1f5f9;
+  --highlight: #fef3c7;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+}
+
+.dark {
+  --bg: #0f172a;
+  --bg-secondary: #1e293b;
+  --text: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --border: #334155;
+  --accent: #60a5fa;
+  --accent-light: #1e3a5f;
+  --hover: #1e293b;
+  --tag-bg: #1e3a5f;
+  --tag-text: #93c5fd;
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  --sidebar-bg: #0c1525;
+  --card-bg: #1e293b;
+  --code-bg: #1e293b;
+  --highlight: #422006;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  min-height: 100vh;
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 24px 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.sidebar h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.sidebar .subtitle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: -12px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.sidebar nav { flex: 1; }
+.sidebar nav a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: all 0.15s;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+.sidebar nav a:hover, .sidebar nav a.active {
+  background: var(--hover);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: var(--hover); }
+
+/* ── Main ── */
+.main {
+  flex: 1;
+  padding: 40px 48px;
+  max-width: 900px;
+  overflow-y: auto;
+}
+
+.main h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+.main > .intro {
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  font-size: 0.95rem;
+}
+
+section { margin-bottom: 48px; }
+section h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--accent);
+}
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+/* ── Accordion ── */
+.accordion {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: var(--card-bg);
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.accordion-header {
+  width: 100%;
+  padding: 14px 18px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.15s;
+}
+.accordion-header:hover { background: var(--hover); }
+.accordion-header .arrow {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.accordion.open .accordion-header .arrow { transform: rotate(180deg); }
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.accordion.open .accordion-body {
+  max-height: 8000px;
+  padding: 0 18px 18px;
+}
+
+/* ── Content styles ── */
+.accordion-body p { margin-bottom: 8px; font-size: 0.92rem; }
+.accordion-body ul { padding-left: 20px; margin-bottom: 10px; }
+.accordion-body li { font-size: 0.9rem; margin-bottom: 4px; color: var(--text-secondary); }
+
+.formula-block {
+  background: var(--code-bg);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  border-left: 3px solid var(--accent);
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.highlight-box {
+  background: var(--highlight);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  border-left: 3px solid var(--warning);
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* ── Search highlight ── */
+.search-match { background: #fde68a; padding: 0 2px; border-radius: 2px; }
+.dark .search-match { background: #854d0e; }
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  display: none;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { padding: 24px 20px; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<aside class="sidebar">
+  <div>
+    <h2>MATH24420 PDE</h2>
+    <p class="subtitle">Partial Differential Equations<br>&amp; Vector Calculus</p>
+  </div>
+  <input type="text" class="search-box" id="search" placeholder="🔍 搜索复习内容...">
+  <nav>
+    <a href="#s1" data-section="s1">1. 向量微积分 &amp; 曲线坐标</a>
+    <a href="#s2" data-section="s2">2. PDE 分类 &amp; 标准型</a>
+    <a href="#s3" data-section="s3">3. Fourier 级数</a>
+    <a href="#s4" data-section="s4">4. 一阶 PDE &amp; 特征线法</a>
+    <a href="#s5" data-section="s5">5. 分离变量法</a>
+    <a href="#s6" data-section="s6">6. 有限差分法</a>
+  </nav>
+  <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
+    <span>🌙</span> <span>暗色模式</span>
+  </button>
+</aside>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main class="main" id="mainContent">
+  <h1>MATH24420 复习要点</h1>
+  <p class="intro">University of Manchester — 偏微分方程与向量微积分 · 全面复习笔记 · 点击标题展开详细内容</p>
+
+  <!-- ═══ Section 1 ═══ -->
+  <section id="s1">
+    <h2>1. 向量微积分 &amp; 曲线坐标</h2>
+    <p class="section-desc">偏微分/偏积分复习 · div, grad, curl · 曲线坐标系 · 积分定理（散度定理、Stokes 定理）</p>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>偏微分与偏积分基础</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p><span class="tag">偏微分</span> 对一个变量求导时，将其他变量视为常数。</p>
+        <p><span class="tag">偏积分</span> 对一个变量积分时，积分"常数"是其他变量的任意函数。</p>
+        <div class="formula-block">
+          <strong>链式法则：</strong> 若 $u(x,y)$ 且 $x=x(t), y=y(t)$，则
+          $$\frac{du}{dt} = \frac{\partial u}{\partial x}\frac{dx}{dt} + \frac{\partial u}{\partial y}\frac{dy}{dt}$$
+        </div>
+        <div class="formula-block">
+          <strong>梯度：</strong> $\nabla f = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)$<br>
+          <strong>散度：</strong> $\nabla \cdot \mathbf{f} = \frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} + \frac{\partial f_z}{\partial z}$<br>
+          <strong>旋度：</strong> $\nabla \times \mathbf{f} = \left|\begin{matrix}\mathbf{e}_x & \mathbf{e}_y & \mathbf{e}_z \\ \partial_x & \partial_y & \partial_z \\ f_x & f_y & f_z\end{matrix}\right|$
+        </div>
+        <div class="highlight-box">
+          <strong>Laplace 方程：</strong> $\nabla^2 f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = 0$ — 解包括 $\cosh y \sin x$、$\ln(x^2+y^2)$ 等调和函数。
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>曲线坐标系</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于坐标变换 $(x,y,z) \to (q_1, q_2, q_3)$：</p>
+        <div class="formula-block">
+          <strong>尺度因子：</strong> $h_i = \left|\frac{\partial \mathbf{r}}{\partial q_i}\right|$<br>
+          <strong>单位基向量：</strong> $\mathbf{e}_{q_i} = \frac{1}{h_i}\frac{\partial \mathbf{r}}{\partial q_i}$<br>
+          <strong>正交性条件：</strong> $\mathbf{e}_{q_i} \cdot \mathbf{e}_{q_j} = 0$（当 $i \neq j$）
+        </div>
+        <p><strong>球极坐标 $(r, \theta, \phi)$：</strong></p>
+        <div class="formula-block">
+          $x = r\cos\theta\sin\phi,\; y = r\sin\theta\sin\phi,\; z = r\cos\phi$<br>
+          $h_r = 1,\; h_\theta = r,\; h_\phi = r\sin\theta$<br>
+          线元：$ds^2 = dr^2 + r^2 d\theta^2 + r^2\sin^2\theta\,d\phi^2$<br>
+          体元：$dV = r^2\sin\theta\,dr\,d\theta\,d\phi$
+        </div>
+        <p><strong>一般正交曲线坐标系中的算子：</strong></p>
+        <div class="formula-block">
+          $\nabla f = \frac{1}{h_1}\frac{\partial f}{\partial q_1}\mathbf{e}_1 + \frac{1}{h_2}\frac{\partial f}{\partial q_2}\mathbf{e}_2 + \frac{1}{h_3}\frac{\partial f}{\partial q_3}\mathbf{e}_3$<br><br>
+          $\nabla \cdot \mathbf{u} = \frac{1}{h_1 h_2 h_3}\left[\frac{\partial}{\partial q_1}(h_2 h_3 u_1) + \frac{\partial}{\partial q_2}(h_1 h_3 u_2) + \frac{\partial}{\partial q_3}(h_1 h_2 u_3)\right]$<br><br>
+          $\nabla \times \mathbf{u} = \frac{1}{h_1 h_2 h_3}\begin{vmatrix}h_1\mathbf{e}_1 & h_2\mathbf{e}_2 & h_3\mathbf{e}_3 \\ \partial_{q_1} & \partial_{q_2} & \partial_{q_3} \\ h_1 u_1 & h_2 u_2 & h_3 u_3\end{vmatrix}$
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>多重积分 &amp; 积分定理</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p><span class="tag">三重积分</span> 常用于计算体积、质量和惯性矩。选择合适的坐标系可大幅简化。</p>
+        <div class="formula-block">
+          <strong>散度定理 (Gauss)：</strong>
+          $$\iiint_\Omega \nabla \cdot \mathbf{u}\,dV = \oiint_{\partial\Omega} \mathbf{u} \cdot \mathbf{n}\,dS$$
+        </div>
+        <div class="formula-block">
+          <strong>Stokes 定理 (3D)：</strong>
+          $$\iint_\Sigma (\nabla \times \mathbf{u}) \cdot \mathbf{n}\,dS = \oint_{\partial\Sigma} \mathbf{u} \cdot d\mathbf{r}$$
+        </div>
+        <div class="highlight-box">
+          <strong>考试高频考点：</strong> 验证 Stokes 定理 — 需分别计算面积分和线积分，检查结果是否一致。通常给定参数化曲面和向量场。
+        </div>
+        <p><strong>参数化曲面积分：</strong></p>
+        <div class="formula-block">
+          对于曲面 $\mathbf{r}(u,v)$，面元 $dS = \left|\frac{\partial \mathbf{r}}{\partial u} \times \frac{\partial \mathbf{r}}{\partial v}\right| du\,dv$<br>
+          面积 $A = \iint \left|\frac{\partial \mathbf{r}}{\partial u} \times \frac{\partial \mathbf{r}}{\partial v}\right| du\,dv$
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Section 2 ═══ -->
+  <section id="s2">
+    <h2>2. PDE 分类 &amp; 标准型转换</h2>
+    <p class="section-desc">线性/半线性/拟线性/非线性 · 二阶PDE分类（双曲/抛物/椭圆）· 特征方程 · 标准型 · D'Alembert 解</p>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>PDE 的线性分类</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于 PDE $F(x, y, u, u_x, u_y, u_{xx}, u_{xy}, u_{yy}, \ldots) = 0$：</p>
+        <ul>
+          <li><strong>线性 (Linear)：</strong> 未知函数 $u$ 及其各阶导数都是一次的，系数仅依赖于自变量。例：$u_{xx} + u_t = xu$</li>
+          <li><strong>半线性 (Semilinear)：</strong> 最高阶导数为线性，低阶项可以是非线性的。例：$u_{xx} + uu_y = u^3$</li>
+          <li><strong>拟线性 (Quasilinear)：</strong> 最高阶导数的系数可以依赖于低阶导数。例：$x^2 u_{xx} + xy u_{xy} + y^2 u_{yy} = u$</li>
+          <li><strong>完全非线性 (Fully nonlinear)：</strong> 最高阶导数以非线性方式出现。例：$(u_x)^2 u_{xxx} + (u_{xx})^2 + uu_x = x$</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>二阶半线性 PDE 的类型判定</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于 $A u_{xx} + 2B u_{xy} + C u_{yy} + D(x,y,u,u_x,u_y) = 0$：</p>
+        <div class="formula-block">
+          <strong>判别式：</strong> $\Delta = B^2 - AC$<br>
+          $\Delta > 0$ → <span class="tag">双曲型 (Hyperbolic)</span> 如波动方程 $u_{tt} - c^2 u_{xx} = 0$<br>
+          $\Delta = 0$ → <span class="tag">抛物型 (Parabolic)</span> 如热方程 $u_t = \kappa u_{xx}$<br>
+          $\Delta < 0$ → <span class="tag">椭圆型 (Elliptic)</span> 如 Laplace 方程 $u_{xx} + u_{yy} = 0$
+        </div>
+        <div class="highlight-box">
+          <strong>注意：</strong> 类型可能随区域而改变！例如 Tricomi 方程 $u_{xx} + x u_{yy} = 0$ 在 $x>0$ 为椭圆型，$x<0$ 为双曲型。
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>坐标变换 &amp; 标准型</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>通过特征方程求解坐标变换 $(\xi, \eta)$，使 PDE 化为标准型：</p>
+        <div class="formula-block">
+          <strong>特征方程：</strong> $A\left(\frac{dy}{dx}\right)^2 - 2B\frac{dy}{dx} + C = 0$<br>
+          解得 $\frac{dy}{dx} = \frac{B \pm \sqrt{B^2 - AC}}{A}$
+        </div>
+        <p><strong>双曲型：</strong> 两个实特征方向 → 标准型 $u_{\xi\eta} = \ldots$ 或 $u_{\xi\xi} - u_{\eta\eta} = \ldots$</p>
+        <p><strong>抛物型：</strong> 一个实特征方向 → 标准型 $u_{\xi\xi} = \ldots$</p>
+        <p><strong>椭圆型：</strong> 复共轭特征方向 → 标准型 $u_{\xi\xi} + u_{\eta\eta} = \ldots$</p>
+        <div class="formula-block">
+          <strong>不变性：</strong> 类型在坐标变换下不变：$b^2 - ac = (B^2 - AC)J^2$，其中 $J = \xi_x\eta_y - \xi_y\eta_x$ 为 Jacobian。
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>D'Alembert 解（波动方程）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>波动方程 $u_{xx} - \frac{1}{c^2}u_{tt} = 0$ 的标准型为 $u_{\xi\eta} = 0$。</p>
+        <div class="formula-block">
+          <strong>D'Alembert 通解：</strong>
+          $$u(x,t) = f(x - ct) + g(x + ct)$$
+          其中 $f$ 和 $g$ 为任意函数，分别表示向右和向左传播的波。
+        </div>
+        <p>对于初始条件 $u(x,0) = u_0(x)$、$u_t(x,0) = 0$：</p>
+        <div class="formula-block">
+          $$u(x,t) = \frac{1}{2}[u_0(x-ct) + u_0(x+ct)]$$
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Section 3 ═══ -->
+  <section id="s3">
+    <h2>3. Fourier 级数</h2>
+    <p class="section-desc">跳变间断 · 周期延拓 · 正交函数系 · Fourier 正弦/余弦展开 · PDE 边值问题</p>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>跳变间断与周期延拓</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p><span class="tag">跳变间断 (Jump discontinuity)</span> 函数在某点 $x_0$ 处左右极限都存在但不相等。可用 $[f]_{x_0} = f(x_0^+) - f(x_0^-)$ 表示跳变值。</p>
+        <p><span class="tag">分段连续函数</span> 在有限区间上只有有限个跳变间断，且在每个子区间上连续。</p>
+        <p><span class="tag">周期延拓</span> 将定义在 $[0, L]$ 上的函数延拓成全实轴上的周期函数（周期可为 $2L$）：</p>
+        <ul>
+          <li><strong>偶延拓：</strong> $f(-x) = f(x)$ → 得到余弦级数</li>
+          <li><strong>奇延拓：</strong> $f(-x) = -f(x)$ → 得到正弦级数</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>Fourier 级数展开</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>定义在 $[-L, L]$ 上的函数 $f(x)$ 的 Fourier 级数：</p>
+        <div class="formula-block">
+          $$f(x) \sim \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos\left(\frac{n\pi x}{L}\right) + b_n \sin\left(\frac{n\pi x}{L}\right)\right]$$
+          $$a_n = \frac{1}{L}\int_{-L}^{L} f(x)\cos\left(\frac{n\pi x}{L}\right)dx,\quad b_n = \frac{1}{L}\int_{-L}^{L} f(x)\sin\left(\frac{n\pi x}{L}\right)dx$$
+        </div>
+        <p><strong>Fourier 正弦级数</strong>（$f$ 在 $[0,L]$ 上，奇延拓）：</p>
+        <div class="formula-block">
+          $$f(x) \sim \sum_{n=1}^{\infty} b_n \sin\left(\frac{n\pi x}{L}\right),\quad b_n = \frac{2}{L}\int_0^L f(x)\sin\left(\frac{n\pi x}{L}\right)dx$$
+        </div>
+        <p><strong>Fourier 余弦级数</strong>（$f$ 在 $[0,L]$ 上，偶延拓）：</p>
+        <div class="formula-block">
+          $$f(x) \sim \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos\left(\frac{n\pi x}{L}\right),\quad a_n = \frac{2}{L}\int_0^L f(x)\cos\left(\frac{n\pi x}{L}\right)dx$$
+        </div>
+        <div class="highlight-box">
+          <strong>Dirichlet 收敛定理：</strong> 若 $f$ 在 $[-L,L]$ 上分段连续且分段单调，则 Fourier 级数在连续点收敛于 $f(x)$，在跳变点收敛于 $\frac{f(x^+)+f(x^-)}{2}$。
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>正交性与应用</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>三角函数系 $\{1, \cos\frac{n\pi x}{L}, \sin\frac{n\pi x}{L}\}$ 在 $[-L,L]$ 上正交：</p>
+        <div class="formula-block">
+          $\int_{-L}^{L} \cos\frac{n\pi x}{L}\cos\frac{m\pi x}{L}dx = L\delta_{nm}$（$n,m \neq 0$）<br>
+          $\int_{-L}^{L} \sin\frac{n\pi x}{L}\sin\frac{m\pi x}{L}dx = L\delta_{nm}$<br>
+          $\int_{-L}^{L} \cos\frac{n\pi x}{L}\sin\frac{m\pi x}{L}dx = 0$
+        </div>
+        <p><strong>PDE 边值问题中的应用：</strong> 波动方程 $u_{tt} = c^2 u_{xx}$ 在 $x \in [0,L]$ 上，边界条件 $u_x(0,t) = u_x(L,t) = 0$ 的通解：</p>
+        <div class="formula-block">
+          $$u(x,t) = A_0 + \sum_{n=1}^{\infty} \cos\left(\frac{n\pi x}{L}\right)\left[A_n\cos\left(\frac{n\pi c t}{L}\right) + B_n\sin\left(\frac{n\pi c t}{L}\right)\right]$$
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Section 4 ═══ -->
+  <section id="s4">
+    <h2>4. 一阶 PDE &amp; 特征线法</h2>
+    <p class="section-desc">一阶PDE分类 · 坐标变换法 · 特征线法 · Cauchy 问题</p>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>一阶 PDE 分类</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <ul>
+          <li><strong>线性：</strong> $a(x,y)u_x + b(x,y)u_y = c(x,y)u + d(x,y)$</li>
+          <li><strong>半线性：</strong> $a(x,y)u_x + b(x,y)u_y = c(x,y,u)$</li>
+          <li><strong>拟线性：</strong> $a(x,y,u)u_x + b(x,y,u)u_y = c(x,y,u)$</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>坐标变换法</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于 $a u_x + b u_y + c u = d$，引入新坐标：</p>
+        <div class="formula-block">
+          $\xi = \xi(x,y)$（沿特征方向），$\eta = \eta(x,y)$（通常选 $\eta = y$ 或 $x$）<br>
+          特征方向满足：$\frac{dx}{a} = \frac{dy}{b}$
+        </div>
+        <p>变换后 PDE 化为关于 $\xi$ 的 ODE，可沿特征线积分求解。</p>
+        <div class="highlight-box">
+          <strong>关键步骤：</strong>
+          ① 求解 $\frac{dy}{dx} = \frac{b}{a}$ 得特征线 $\phi(x,y) = \text{const}$<br>
+          ② 设 $\xi = \phi(x,y)$，$\eta$ 任选<br>
+          ③ 代入链式法则，化简为 ODE<br>
+          ④ 解 ODE 得通解，再代入初始/边界条件
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>特征线法 (Method of Characteristics)</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于拟线性方程 $a(x,y,u)u_x + b(x,y,u)u_y = c(x,y,u)$：</p>
+        <div class="formula-block">
+          <strong>特征方程（ODE 系统）：</strong>
+          $$\frac{dx}{ds} = a(x,y,u),\quad \frac{dy}{ds} = b(x,y,u),\quad \frac{du}{ds} = c(x,y,u)$$
+        </div>
+        <p>对于 Cauchy 数据（给定在曲线 $\Gamma$ 上），先用初始条件确定积分常数，再消去参数 $s$ 得解。</p>
+        <div class="highlight-box">
+          <strong>几何解释：</strong> 解曲面 $u(x,y)$ 由一族特征曲线构成。初始数据沿 $\Gamma$ 给出，特征线从 $\Gamma$ 上每一点出发，将数据"传播"到整个区域。
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>典型例题类型</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <ul>
+          <li><strong>常系数线性：</strong> $au_x + bu_y + cu = 0$ → 通解 $u = e^{-\frac{c}{a}x}f(ay-bx)$</li>
+          <li><strong>变系数：</strong> $xu_x - yu_y = u$，Cauchy 数据 $u=x^2$ on $y=x$</li>
+          <li><strong>半线性：</strong> $xu_x + yu_y = xe^{-u}$，数据 $u(x, x^2) = 0$</li>
+          <li><strong>含根号：</strong> $\sqrt{1-x^2}u_x + u_y = 0$，数据 $u(0,y) = y$</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Section 5 ═══ -->
+  <section id="s5">
+    <h2>5. 分离变量法</h2>
+    <p class="section-desc">热方程 · 波动方程 · Laplace 方程 · 特征值问题 · 非齐次边界条件 · 正交性</p>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>分离变量法基本步骤</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>设 $u(x,t) = X(x)T(t)$（或 $u(x,y) = X(x)Y(y)$），代入 PDE：</p>
+        <ol>
+          <li>分离变量，令两边等于分离常数 $\lambda$</li>
+          <li>解 $X(x)$ 的特征值问题（Sturm-Liouville 问题）</li>
+          <li>解 $T(t)$（或 $Y(y)$）</li>
+          <li>线性叠加构成通解</li>
+          <li>利用初始条件通过正交性确定系数</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>三大经典 PDE 的分离变量</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p><strong>1. 热方程 $u_t = \kappa u_{xx}$</strong></p>
+        <div class="formula-block">
+          设 $u = X(x)T(t)$ → $\frac{T'}{\kappa T} = \frac{X''}{X} = \lambda$<br>
+          $X'' - \lambda X = 0$，$T' = \lambda\kappa T$<br>
+          Dirichlet BC $u(0,t)=u(L,t)=0$ 下：$\lambda_n = -\left(\frac{n\pi}{L}\right)^2$，$X_n = \sin\frac{n\pi x}{L}$<br>
+          通解：$u(x,t) = \sum_{n=1}^\infty B_n \sin\frac{n\pi x}{L} e^{-\kappa(n\pi/L)^2 t}$
+        </div>
+        <p><strong>2. 波动方程 $u_{tt} = c^2 u_{xx}$</strong></p>
+        <div class="formula-block">
+          设 $u = X(x)T(t)$ → $\frac{T''}{c^2 T} = \frac{X''}{X} = \lambda$<br>
+          $T'' - \lambda c^2 T = 0$，$X'' - \lambda X = 0$<br>
+          Neumann BC $u_x(0,t)=u_x(L,t)=0$ 下：$\lambda_n = -\left(\frac{n\pi}{L}\right)^2$，$X_n = \cos\frac{n\pi x}{L}$<br>
+          通解：$u = A_0 + \sum_{n=1}^\infty \cos\frac{n\pi x}{L}\left[A_n\cos\frac{n\pi ct}{L} + B_n\sin\frac{n\pi ct}{L}\right]$
+        </div>
+        <p><strong>3. Laplace 方程 $u_{xx} + u_{yy} = 0$</strong></p>
+        <div class="formula-block">
+          设 $u = X(x)Y(y)$ → $-\frac{X''}{X} = \frac{Y''}{Y} = \lambda$<br>
+          边界条件决定特征函数。混合边界下特征函数不再是简单的 sin/cos。
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>非齐次边界条件的处理</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于非齐次 BC，方法：<strong>设 $u = v + w$</strong>，其中：</p>
+        <ul>
+          <li>$v(x)$ 是满足非齐次 BC 的特解（通常取 $x$ 的线性函数且不依赖于 $t$）</li>
+          <li>$w(x,t)$ 满足齐次 BC 的 PDE，可用分离变量法求解</li>
+        </ul>
+        <div class="formula-block">
+          例：$u_t = u_{xx}$ 且 $u(0,t)=\alpha$、$u(L,t)=\beta$<br>
+          取 $v(x) = \alpha + \frac{\beta-\alpha}{L}x$（满足 BC 的稳态解）<br>
+          令 $w = u - v$，则 $w_t = w_{xx}$ 且 $w(0,t)=w(L,t)=0$ → 标准分离变量
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>混合边界条件 &amp; 正交性</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>当边界条件不是纯 Dirichlet 或纯 Neumann（如 $u(0,t)=0$、$u_x(L,t)=0$），特征函数不再是标准 sin/cos。</p>
+        <div class="formula-block">
+          <strong>例：</strong> $u(0)=0$、$u_x(\pi)=0$ 的特征值问题 $X''-\lambda X=0$<br>
+          特征函数：$X_n = \sin\left(\frac{(n-1/2)x}{L}\right)$，$\lambda_n = -\left(\frac{(n-1/2)\pi}{L}\right)^2$
+        </div>
+        <p>利用 <strong>正交性</strong> $\int_0^L X_n X_m dx = 0$（$n \neq m$）确定级数系数：</p>
+        <div class="formula-block">
+          $$B_n = \frac{\int_0^L f(x) X_n(x) dx}{\int_0^L X_n^2(x) dx}$$
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Section 6 ═══ -->
+  <section id="s6">
+    <h2>6. 有限差分法</h2>
+    <p class="section-desc">O(hⁿ) 阶数记号 · 前向/后向/中心差分 · 截断误差 · 迎风格式 · Method of Lines · 稳定性</p>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>阶数记号 O(hⁿ)</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>$f(h) = O(h^n)$ 意味着存在常数 $C > 0$ 使得 $|f(h)| \leq C|h|^n$ 当 $h \to 0$。</p>
+        <div class="formula-block">
+          <strong>运算法则：</strong><br>
+          $f = O(h^n), g = O(h^m), n \geq m$：<br>
+          $f + g = O(h^n)$（低阶项主导）<br>
+          $f \cdot g = O(h^{n+m})$<br>
+          $f/h^m = O(h^{n-m})$（当 $n \geq m$）
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>一阶 &amp; 二阶导数差分近似</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于均匀网格 $x_j = jh$，记 $u_j = u(x_j)$：</p>
+        <div class="formula-block">
+          <strong>前向差分：</strong> $u'(x) = \frac{u(x+h)-u(x)}{h} + O(h)$<br>
+          <strong>后向差分：</strong> $u'(x) = \frac{u(x)-u(x-h)}{h} + O(h)$<br>
+          <strong>中心差分：</strong> $u'(x) = \frac{u(x+h)-u(x-h)}{2h} + O(h^2)$<br><br>
+          <strong>二阶中心差分：</strong> $u''(x) = \frac{u(x+h)-2u(x)+u(x-h)}{h^2} + O(h^2)$
+        </div>
+        <div class="highlight-box">
+          <strong>关键：</strong> 中心差分比前向/后向差分精度高一阶（$O(h^2)$ vs $O(h)$）。Taylor 展开可直接证明截断误差的阶数。
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>边值问题的有限差分</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>对于 ODE $-u'' + w u' = 0$，$u(0)=1$，$u(1)=0$：</p>
+        <div class="formula-block">
+          中心差分近似：$\frac{-u_{j+1}+2u_j-u_{j-1}}{h^2} + w\frac{u_{j+1}-u_{j-1}}{2h} = 0$<br>
+          组装为三对角线性系统 $A\mathbf{u} = \mathbf{f}$
+        </div>
+        <p><strong>Neumann 边界条件 $u'(1)=0$：</strong> 需用二阶中心差分近似：</p>
+        <div class="formula-block">
+          $u'(1) \approx \frac{au_{N-2} + bu_{N-1} + cu_N}{h} = 0$<br>
+          使用 Taylor 展开确定系数 $a,b,c$ 使格式达到 $O(h^2)$
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>迎风格式 (Upwind) &amp; 稳定性</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>当存在对流项时，中心差分可能不稳定。<strong>迎风格式</strong>用后向差分近似一阶导数（当 $w > 0$）：</p>
+        <div class="formula-block">
+          $u'(x_j) \approx \frac{u_j - u_{j-1}}{h} + O(h)$（迎风/后向差分）<br>
+          截断误差为 $O(h)$，比中心差分的 $O(h^2)$ 低，但数值稳定性更好。
+        </div>
+        <p><strong>稳定性定理</strong>用于判断差分格式是否稳定（小扰动不会导致数值解发散）。</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header"><span>Method of Lines</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>用于求解依赖时间的 PDE（如热方程 $u_t = u_{xx}$）：</p>
+        <ol>
+          <li><strong>空间离散：</strong> 在空间方向用有限差分近似 $u_{xx}$</li>
+          <li><strong>化为 ODE 系统：</strong> 得到关于 $t$ 的一阶 ODE 组 $\frac{d\mathbf{u}}{dt} = A\mathbf{u} + \mathbf{f}$</li>
+          <li><strong>时间推进：</strong> 用 ODE 求解器（如 Euler、RK4）逐步推进</li>
+        </ol>
+        <div class="formula-block">
+          例：$u_t = u_{xx} + f(x)$，稳态 $v(x)$ 满足 $v_{xx} + f(x) = 0$
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align:center; padding: 30px; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px;">
+    MATH24420 Partial Differential Equations &amp; Vector Calculus · University of Manchester · 复习资料整理
+  </footer>
+</main>
+
+<script>
+// ── Accordion ──
+document.querySelectorAll('.accordion-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.classList.toggle('open');
+  });
+});
+
+// ── Theme toggle ──
+function toggleTheme() {
+  document.documentElement.classList.toggle('dark');
+  const btn = document.getElementById('themeBtn');
+  const isDark = document.documentElement.classList.contains('dark');
+  btn.innerHTML = isDark ? '<span>☀️</span> <span>亮色模式</span>' : '<span>🌙</span> <span>暗色模式</span>';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+// Load saved theme
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+  document.getElementById('themeBtn').innerHTML = '<span>☀️</span> <span>亮色模式</span>';
+}
+
+// ── Search ──
+const searchBox = document.getElementById('search');
+const sections = document.querySelectorAll('section');
+const accordions = document.querySelectorAll('.accordion');
+
+searchBox.addEventListener('input', function() {
+  const query = this.value.toLowerCase().trim();
+
+  // Clear previous highlights
+  document.querySelectorAll('.search-match').forEach(el => {
+    el.replaceWith(el.textContent);
+  });
+
+  if (!query) {
+    // Show all
+    sections.forEach(s => s.style.display = '');
+    accordions.forEach(a => a.style.display = '');
+    document.querySelector('.no-results')?.remove();
+    updateSidebarLinks();
+    return;
+  }
+
+  let anyVisible = false;
+
+  accordions.forEach(acc => {
+    const body = acc.querySelector('.accordion-body');
+    const text = acc.textContent.toLowerCase();
+    if (text.includes(query)) {
+      acc.style.display = '';
+      acc.classList.add('open');
+      anyVisible = true;
+
+      // Highlight matches in body
+      highlightText(body, query);
+    } else {
+      acc.style.display = 'none';
+      acc.classList.remove('open');
+    }
+  });
+
+  // Hide empty sections
+  sections.forEach(section => {
+    const visibleAccordions = section.querySelectorAll('.accordion[style*="display: none"], .accordion:not([style])').length;
+    const hasVisible = Array.from(section.querySelectorAll('.accordion')).some(a => a.style.display !== 'none');
+    if (!hasVisible) {
+      section.style.display = 'none';
+    } else {
+      section.style.display = '';
+    }
+  });
+
+  // No results message
+  let noRes = document.querySelector('.no-results');
+  if (!anyVisible) {
+    if (!noRes) {
+      noRes = document.createElement('div');
+      noRes.className = 'no-results';
+      noRes.innerHTML = '<p style="font-size: 1.2rem;">😕</p><p>没有找到匹配的复习内容</p><p style="font-size:0.85rem;">试试其他关键词如 "特征线"、"Laplace"、"Fourier"、"差分"</p>';
+      document.getElementById('mainContent').appendChild(noRes);
+    }
+    noRes.style.display = '';
+  } else if (noRes) {
+    noRes.style.display = 'none';
+  }
+
+  updateSidebarLinks();
+});
+
+function highlightText(element, query) {
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(node => {
+    const text = node.textContent.toLowerCase();
+    if (text.includes(query)) {
+      const parent = node.parentNode;
+      if (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE') return;
+      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0;
+      node.textContent.replace(regex, (match, p1, offset) => {
+        frag.appendChild(document.createTextNode(node.textContent.slice(lastIdx, offset)));
+        const mark = document.createElement('mark');
+        mark.className = 'search-match';
+        mark.textContent = match;
+        frag.appendChild(mark);
+        lastIdx = offset + match.length;
+      });
+      if (lastIdx < node.textContent.length) {
+        frag.appendChild(document.createTextNode(node.textContent.slice(lastIdx)));
+      }
+      parent.replaceChild(frag, node);
+    }
+  });
+}
+
+// ── Sidebar active state ──
+function updateSidebarLinks() {
+  const links = document.querySelectorAll('.sidebar nav a');
+  let current = '';
+  sections.forEach(s => {
+    if (s.style.display !== 'none') {
+      current = s.id;
+      return; // break equivalent
+    }
+  });
+  links.forEach(a => {
+    a.classList.toggle('active', a.dataset.section === current);
+  });
+  if (!current) links.forEach(a => a.classList.remove('active'));
+}
+
+// Scroll spy
+const mainEl = document.querySelector('.main');
+mainEl.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    const rect = s.getBoundingClientRect();
+    if (rect.top <= 150) current = s.id;
+  });
+  document.querySelectorAll('.sidebar nav a').forEach(a => {
+    a.classList.toggle('active', a.dataset.section === current);
+  });
+});
+
+// Sidebar click - smooth scroll
+document.querySelectorAll('.sidebar nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.getElementById(a.dataset.section);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Open first accordion by default
+document.querySelectorAll('.accordion').forEach((acc, i) => {
+  if (i < 2) acc.classList.add('open');
+});
+</script>
+</body>
+</html>
