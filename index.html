@@ -300,6 +300,7 @@ section h2 {
     <a href="#s4" data-section="s4">4. 一阶 PDE &amp; 特征线法</a>
     <a href="#s5" data-section="s5">5. 分离变量法</a>
     <a href="#s6" data-section="s6">6. 有限差分法</a>
+    <a href="#s7" data-section="s7" style="color:#d97706;font-weight:600;">📋 必做习题清单</a>
   </nav>
   <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
     <span>🌙</span> <span>暗色模式</span>
@@ -725,6 +726,161 @@ section h2 {
           例：$u_t = u_{xx} + f(x)$，稳态 $v(x)$ 满足 $v_{xx} + f(x) = 0$
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══ Section 7 ═══ -->
+  <section id="s7">
+    <h2>📋 必做习题清单（23 题覆盖全部考点）</h2>
+    <p class="section-desc">基于 2023 / 2024 / 2025 三张试卷 + Mock Exam 交叉对比得出 · 按做题顺序排列</p>
+
+    <div class="accordion open">
+      <button class="accordion-header"><span>📗 Semester 1 — 向量微积分 + PDE 分类（8 类题型，先做）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin-top:8px;">
+          <thead>
+            <tr style="background:var(--code-bg); text-align:left;">
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">#</th>
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">试卷考点</th>
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">考试出现</th>
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">对应习题</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">1</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">PDE 分类（线性/半线性/拟线性/非线性、双曲/抛物/椭圆）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2025 MCQ</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 4 Q1, Q2</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">2</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">特征坐标 + 标准型转换</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2025 MCQ</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 4 Q4, Q7</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">3</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">Fourier 级数（系数计算、收敛性）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2025 MCQ</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 5 Q2-Q5</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">4</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">曲线坐标（基向量/尺度因子/正交性）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 B2</span> <span class="tag">2024 A2</span> <span class="tag">2025 B2</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 2 Q1, Q5</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">5</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">散度定理（体积分 ↔ 面积分）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 B2</span> <span class="tag">2024 A2</span> <span class="tag">2025 B2</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 3 Q12, Q14, Q15</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">6</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">参数化曲面 + 表面积</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 B1</span> <span class="tag">2024 A1</span> <span class="tag">2025 B1</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 3 Q10</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">7</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">Stokes 定理验证（线积分 = 面积分）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 B1</span> <span class="tag">2024 A1</span> <span class="tag">2025 B1</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 3 Q16, Q17</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">8</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">三重积分（换坐标算体积）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">Mock</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 3 Q1, Q2, Q4</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:10px;">Sem1 小计：<strong>16 道题</strong>（Sheet 2: 2道 / Sheet 3: 8道 / Sheet 4: 4道 / Sheet 5: 2道）</p>
+      </div>
+    </div>
+
+    <div class="accordion open">
+      <button class="accordion-header"><span>📘 Semester 2 — PDE 求解方法（9 类题型，后做）</span><span class="arrow">▼</span></button>
+      <div class="accordion-body">
+        <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin-top:8px;">
+          <thead>
+            <tr style="background:var(--code-bg); text-align:left;">
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">#</th>
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">试卷考点</th>
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">考试出现</th>
+              <th style="padding:8px 12px; border-bottom:2px solid var(--border);">对应习题</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">9</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">分离变量法 — 热方程（特征值/特征函数/通解）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 C3</span> <span class="tag">2025 C3</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 7 Q1</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">10</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">分离变量法 — 波动方程</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2024 B3</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 7 Q2</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">11</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">非齐次边界条件（特解 + 齐次化）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 C3</span> <span class="tag">2024 B3</span> <span class="tag">2025 C3</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 8 Q1</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">12</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">混合边界条件 + 正交性求系数</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2025 C3</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 8 Q2</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">13</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">一阶 PDE — 坐标变换法</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2025 C4 🆕</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 6 Q3, Q4, Q5</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">14</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">一阶 PDE — 特征线法（参数化）</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2025 C4 🆕</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 6 Q6, Q7, Q8, Q9</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">15</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">有限差分 — 截断误差 / 阶数 / Taylor 展开</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 C4</span> <span class="tag">2024 B4</span> <span class="tag">2025 MCQ</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 9 Q2, Q3, Q4</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">16</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">有限差分 — BVP 边值问题矩阵形式</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 C4</span> <span class="tag">2024 B4</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 10 Q1, Q3</strong></td>
+            </tr>
+            <tr>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">17</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);">有限差分 — 时间推进 / 稳定性条件</td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><span class="tag">2023 C4</span> <span class="tag">2024 B4</span> <span class="tag">2025 MCQ</span></td>
+              <td style="padding:7px 12px; border-bottom:1px solid var(--border);"><strong>Sheet 10 + 课堂笔记</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:10px;">Sem2 小计：<strong>17 道题</strong>（Sheet 6: 7道 / Sheet 7: 2道 / Sheet 8: 2道 / Sheet 9: 3道 / Sheet 10: 3道）</p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px;">
+      <strong>🟡 2025 年关键变化提醒：</strong>
+      <ul style="margin:6px 0 0 16px;">
+        <li>特征线法升级为 <strong>15 分大题</strong>（C4），2023/2024 没考过 → Sheet 6 必须做完</li>
+        <li>有限差分降级为 <strong>Section A 选择题</strong>（4-6 分）→ Sheet 9/10 懂概念即可，不用写长篇矩阵</li>
+        <li>Section A 全是 MCQ — 考 PDE 分类、特征坐标识别、Fourier 系数、差分精度阶数、稳定性条件</li>
+      </ul>
     </div>
   </section>
 
